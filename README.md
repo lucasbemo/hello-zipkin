@@ -51,6 +51,15 @@ curl -s "http://localhost:9411/api/v2/trace/$TRACE_ID" | grep -E "api-gateway|pa
 
 If both service names appear in the trace output, Zipkin has spans for the gateway and the payment service.
 
+### View Traces in Zipkin UI
+
+You can also view the traces visually using the Zipkin web UI:
+
+1. Open your browser and navigate to [http://localhost:9411/zipkin/](http://localhost:9411/zipkin/)
+2. Click on the **"+"** button to add a filter, or click **"RUN QUERY"** to see all recent traces.
+3. You will see a list of traces. Click on any trace to view the detailed **waterfall diagram**.
+4. This diagram shows how the request flowed from the `api-gateway` to the `payment-service`, including how long each span (operation) took. This helps identify latency bottlenecks across your microservices.
+
 ### Troubleshooting
 
 - No traces: confirm `ZIPKIN_ENDPOINT` is `http://zipkin:9411/api/v2/spans`.
